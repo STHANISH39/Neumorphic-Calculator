@@ -1,0 +1,151 @@
+:root {
+    --bg: #e0e5ec;
+    --light: #ffffff;
+    --dark: #a3b1c6;
+    --text: #4a5568;
+    --accent: #6c63ff;
+    --danger: #e0577a;
+    --font: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg: #2b2f36;
+        --light: #373c45;
+        --dark: #1f2228;
+        --text: #c7cdd8;
+        --accent: #8f88ff;
+        --danger: #ff7a9b;
+    }
+}
+
+:root[data-theme="dark"] {
+    --bg: #2b2f36;
+    --light: #373c45;
+    --dark: #1f2228;
+    --text: #c7cdd8;
+    --accent: #8f88ff;
+    --danger: #ff7a9b;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.calc {
+    width: 100%;
+    max-width: 340px;
+    padding: 24px;
+    border-radius: 32px;
+    background: var(--bg);
+    box-shadow: 14px 14px 28px var(--dark), -14px -14px 28px var(--light);
+}
+
+.top {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+}
+
+.display {
+    border-radius: 20px;
+    padding: 16px 18px;
+    min-height: 108px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    box-shadow: inset 6px 6px 12px var(--dark), inset -6px -6px 12px var(--light);
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+
+.expr {
+    font-size: 15px;
+    opacity: .65;
+    min-height: 20px;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.value {
+    font-size: 40px;
+    font-weight: 300;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+button {
+    font: inherit;
+    font-size: 20px;
+    color: var(--text);
+    height: 56px;
+    border: 0;
+    border-radius: 16px;
+    cursor: pointer;
+    background: var(--bg);
+    box-shadow: 5px 5px 10px var(--dark), -5px -5px 10px var(--light);
+    transition: box-shadow .12s, transform .12s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:active,
+button.pressed {
+    box-shadow: inset 4px 4px 8px var(--dark), inset -4px -4px 8px var(--light);
+    transform: scale(.97);
+}
+
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.op {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.clear {
+    color: var(--danger);
+    font-weight: 600;
+}
+
+.theme {
+    height: 36px;
+    width: 36px;
+    font-size: 16px;
+    border-radius: 12px;
+    box-shadow: 3px 3px 6px var(--dark), -3px -3px 6px var(--light);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    button {
+        transition: none;
+    }
+}
